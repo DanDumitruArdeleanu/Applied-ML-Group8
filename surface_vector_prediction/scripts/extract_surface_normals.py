@@ -45,6 +45,10 @@ mesh_pv = pv.PolyData(rotated_vertices)
 mesh_pv["Normals"] = rotated_normals
 plotter.add_mesh(mesh_pv, scalars="Normals", lighting=True)
 screenshot_path = os.path.join(augment_dir, "rotated_obj_15_y45.png")
+
+#uncomment the following line to visualize the object with the surface normals
+#plotter.add_arrows(rotated_vertices, rotated_normals, mag=5, color='red')
+
 plotter.show(screenshot=screenshot_path)
 
 plotter.close()
