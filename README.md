@@ -4,7 +4,32 @@ This repository implements a full pipeline for predicting surface normal maps fr
 
 ---
 
-Running the API Server
+## 🚀 Setup & Installation
+
+1. **Clone the repo** and change into the project directory:
+
+   ```bash
+   git clone https://github.com/DanDumitruArdeleanu/Applied-ML-Group8.git
+   cd Applied-ML-Group8
+   ```
+
+2. **Create a virtual environment** and activate it:
+
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate      # macOS/Linux
+   # .\.venv\Scripts\activate   # Windows PowerShell
+   ```
+
+3. **Install required packages**:
+
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+
+### 2. Running the API Server
 
 1. **Start the server** (from project root):
 
