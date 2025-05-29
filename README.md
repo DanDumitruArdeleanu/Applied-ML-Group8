@@ -35,7 +35,7 @@ This repository implements a full pipeline for predicting surface normal maps fr
 
    ```bash
    cd Applied-ML-Group8/fast_api
-   uvicorn scripts.main:app --reload
+   uvicorn app.main:app --reload
    ```
 
 2. **Browse the API docs**:
