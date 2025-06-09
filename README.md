@@ -25,7 +25,7 @@ This repository implements a full pipeline for predicting surface normal maps fr
 
    ```bash
    pip install --upgrade pip
-   pip install -r requirements.txt
+   pip install -r fast_api/requirements.txt
    ```
 
 
@@ -34,7 +34,7 @@ This repository implements a full pipeline for predicting surface normal maps fr
 1. **Start the server** (from project root):
 
    ```bash
-   cd Applied-ML-Group8/fast_api
+   cd fast_api
    uvicorn app.main:app --reload
    ```
 
