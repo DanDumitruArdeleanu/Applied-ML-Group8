@@ -4,6 +4,45 @@ This repository implements a full pipeline for predicting surface normal maps fr
 
 ---
 
+## 📁 Directory Hierarchy
+
+```
+script_directory/  (project root)
+├─ data/
+│  ├─ raw_data/                                 # Original .ply mesh files: obj_01.ply … obj_14.ply
+│  ├─ preprocessed_data/                        # Feature-extraction & analysis outputs
+│  ├─ postprocessed_data/                       # Rendered screenshots & normals
+│  │  ├─ screenshots/
+│  │  │  ├─ obj_01/ … obj_14/                   # RGB-lit screenshots per orientation
+│  │  └─ normals/
+│  │     ├─ obj_01/ … obj_14/                   # Normal-map renders per orientation
+│  └─ predicted_data/                           # Model validation predictions
+│     ├─ obj_01/ … obj_14/                      # Predictions per object (best & worst)
+├─ hyperparameter_optimisation/_optimisation/
+│  ├─ kt_dense_norm_tuning/
+│  │  └─ dense_norm_pred/                       # Keras-Tuner outputs & trials
+│  │     ├─ trial_0000/ … trial_0029
+│  │     └─ tuner0.json                         # Tuner state for reload
+│  └─ exported_dense_normal_model/              # Final models, hyperparameters, & summaries
+│     ├─ best_dense_normal_model.keras
+│     ├─ best_hyperparameters.json
+│     ├─ worst_dense_normal_model.keras
+│     ├─ worst_hyperparameters.json
+│     ├─ performance_summary.json
+│     └─ trial_scores.json                      # Aggregated trial scores
+├─ scripts/                                     # All Python scripts
+│  ├─ config.py                                 # Centralized path config
+│  ├─ data_datapreprocessing.py                 # Raw → PCA features
+│  ├─ data_postprocessing.py                    # Rotate & render meshes per orientation
+│  ├─ extract_models.py                         # Summarize trial scores into JSON
+│  ├─ train_model.py                            # Hyperparameter tuning & model export
+│  ├─ main.py                                   # FastAPI server entrypoint
+├─ requirements.txt                             # Third-party dependencies
+└─ README.md                                    # You are here
+```
+
+---
+
 ## 🚀 Setup & Installation
 
 1. **Clone the repo** and change into the project directory:
@@ -25,17 +64,66 @@ This repository implements a full pipeline for predicting surface normal maps fr
 
    ```bash
    pip install --upgrade pip
-   pip install -r fast_api/requirements.txt
+   pip install -r requirements.txt
    ```
 
+---
 
-### 2. Running the API Server
+## 🛠️ Usage
+
+### 1. Data Preprocessing & Rendering
+
+* **Preprocess raw `.ply` meshes** and compute PCA features:
+
+  ```bash
+  python scripts/data_datapreprocessing.py
+  ```
+
+* **Generate rotated screenshots & normal maps**:
+
+  ```bash
+  python scripts/data_postprocessing.py
+  ```
+
+  Outputs are placed in:
+
+  ```bash
+  data/postprocessed_data/screenshots/obj_XX/
+  data/postprocessed_data/normals/obj_XX/
+  ```
+
+### 2. Hyperparameter Tuning & Model Export
+
+* **Run training with Keras-Tuner**:
+
+  ```bash
+  python scripts/train_model.py
+  ```
+
+  * Tuner outputs -> `hyperparameter_optimisation/kt_dense_norm_tuning/dense_norm_pred`
+  * Final models & hyperparameters -> `hyperparameter_optimisation/exported_dense_normal_model`
+
+* **Summarize trial scores** (extract\_models.py):
+
+  ```bash
+  python scripts/extract_models.py
+  ```
+
+  Produces `trial_scores.json` in the exported model directory.
+
+* **Generate validation predictions**: included at end of `train_model.py`, saved into:
+
+  ```bash
+  data/predicted_data/obj_XX/best_prediction/
+  data/predicted_data/obj_XX/worst_prediction/
+  ```
+
+### 3. Running the API Server
 
 1. **Start the server** (from project root):
 
    ```bash
-   cd fast_api
-   uvicorn app.main:app --reload
+   uvicorn scripts.main:app --reload
    ```
 
 2. **Browse the API docs**:
@@ -46,3 +134,11 @@ This repository implements a full pipeline for predicting surface normal maps fr
    ```
 
    Use the interactive docs to test the `/predict/` endpoint.
+
+---
+
+## 🔧 Configuration
+
+All file and folder paths are managed centrally in `scripts/config.py`. Modify there if you need to relocate data or outputs.
+
+---
