@@ -1,0 +1,15 @@
+{
+    "num_trials": 30,
+    "best_trial_id": "0024",
+    "worst_trial_id": "0006",
+    "best_performance": 0.9693460464477539,
+    "worst_performance (baseline)": 0.8093861937522888,
+    "mean_performance": 0.9296625991662343,
+    "std_performance": 0.037831391525655664,
+    "standard_error_of_the_mean": 0.007025113043065082,
+    "95%_confidence_interval": [
+        0.915295,
+        0.944031
+    ],
+    "statistically_significant_vs_baseline": true
+}
