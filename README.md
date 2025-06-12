@@ -60,20 +60,21 @@ script_directory/  (project root)
    # .\.venv\Scripts\activate   # Windows PowerShell
    ```
 
-3. **Downloading Postprocessed Data**:
-
-   ```bash
-   https://drive.google.com/file/d/1GdDcnN_wJkE4gFuO9UmRgk-pOfvx4_Kl/view?usp=drive_link    # Google Drive Folder
-   gdown --id 1GdDcnN_wJkE4gFuO9UmRgk-pOfvx4_Kl `
-       --output .\Data\postprocessed_data\postprocessed_data.zip    # Downloading with gdown in terminal
-   Extract the data
-   ```
-
-4. **Install required packages**:
+3. **Install required packages**:
 
    ```bash
    pip install --upgrade pip
    pip install -r requirements.txt
+   ```
+
+4. **Downloading Postprocessed Data**:
+
+   ```bash
+   https://drive.google.com/file/d/1GdDcnN_wJkE4gFuO9UmRgk-pOfvx4_Kl/view?usp=drive_link    # Google Drive Folder
+   gdown --id 1GdDcnN_wJkE4gFuO9UmRgk-pOfvx4_Kl `
+       --output .\Data\ostprocessed_data.zip    # Downloading with gdown in terminal
+   Extract the data from the .zip file and replace the postprocessed_data with the new folder
+   Delete the .zip file
    ```
 
 ---
