@@ -69,13 +69,16 @@ script_directory/  (project root)
 
 4. **Downloading Postprocessed Data**:
 
+  Google Drive link: https://drive.google.com/file/d/1GdDcnN_wJkE4gFuO9UmRgk-pOfvx4_Kl/view?usp=drive_link
+   
    ```bash
-   https://drive.google.com/file/d/1GdDcnN_wJkE4gFuO9UmRgk-pOfvx4_Kl/view?usp=drive_link    # Google Drive Folder
    gdown --id 1GdDcnN_wJkE4gFuO9UmRgk-pOfvx4_Kl `
-       --output .\Data\ostprocessed_data.zip    # Downloading with gdown in terminal
-   Extract the data from the .zip file and replace the postprocessed_data with the new folder
-   Delete the .zip file
+       --output .\Data\postprocessed_data.zip    # Downloading with gdown in terminal
    ```
+
+  Extract the data from the .zip file and replace the postprocessed_data with the new folder
+
+  Delete the .zip file
 
 ---
 
