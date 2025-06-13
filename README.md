@@ -36,6 +36,7 @@ script_directory/  (project root)
 │  ├─ data_postprocessing.py                    # Rotate & render meshes per orientation
 │  ├─ extract_models.py                         # Summarize trial scores into JSON
 │  ├─ train_model.py                            # Hyperparameter tuning & model export
+│  ├─ streamlit.py                              # Streamlit Demo 
 │  ├─ main.py                                   # FastAPI server entrypoint
 ├─ requirements.txt                             # Third-party dependencies
 └─ README.md                                    # You are here
@@ -131,7 +132,7 @@ script_directory/  (project root)
   data/predicted_data/obj_XX/worst_prediction/
   ```
 
-### 3. Running the API Server
+### 3. Running the API Server and Streamlit Demo
 
 1. **Start the server** (from project root):
 
@@ -147,6 +148,13 @@ script_directory/  (project root)
    ```
 
    Use the interactive docs to test the `/predict/` endpoint.
+
+3. **Streamlit Demo**:
+   Make sure to have FastAPI running before starting the demo:
+
+   ```
+   streamlit run scripts/streamlit.py
+   ```
 
 ---
 
