@@ -159,20 +159,29 @@ script_directory/  (project root)
    streamlit run scripts/streamlit.py
    ```
 
-### 4. Evaluation & Metrics Extraction
+## Running The Project With Docker
 
-* **Evaluate trial scores and generate visualizations**:
+1. **Clone the repo** and navigate into the project directory:
 
-  ```bash
-  python scripts/evaluation_scripts/evaluate_trial_scores.py
-  python scripts/evaluation_scripts/extract_metrics.py
-  ```
+   ```bash
+   git clone https://github.com/DanDumitruArdeleanu/Applied-ML-Group8.git
+   cd Applied-ML-Group8
+   ```
+2. **Download Docker Desktop**, from the following link:
+   ```
+   https://www.docker.com/products/docker-desktop/
+   ```
 
-  Outputs are placed in:
+3. **Build The Docker Image**:
+   ```
+   docker build --shm-size=2g -t my-ml-app .
+   ```
 
-  ```bash
-  evaluation/
-  ```
+4. **Run Docker**:
+   ```
+   docker run --shm-size=2g -p 8000:8000 my-ml-app
+   ```
+
 
 ---
 
