@@ -175,7 +175,48 @@ script_directory/  (project root)
   evaluation/
   ```
 
-## Running The Project With Docker
+---
+
+## 📈 Results Summary
+
+Below, we present the key findings from our model evaluations.
+
+- Total Trials: 30
+- Best Trial (0024): 0.9693 Cosine Similarity
+- Worst Trial (0006): 0.8094 Cosine Similarity
+- Statistically Significant Improvement: ✅ (based on 95% confidence interval analysis)
+
+_Note: A cosine similarity of 0 indicates that the predicted and true surface normals are, on average, orthogonal, showing no meaningful alignment and effectively equivalent to random guessing. Our models, achieving scores well above 0, therefore perform significantly better than chance._
+
+---
+
+### 📊 Evaluation Visualizations
+
+#### Best Model
+
+* Accuracy
+
+  ![Best Model Cosine Similarity](evaluation/visual_analysis/best_model_cos_sim.jpeg)
+
+* Loss
+
+  ![Best Model Loss](evaluation/visual_analysis/best_model_loss.jpeg)
+
+---
+
+#### Worst Model (Baseline)
+
+* Accuracy
+
+  ![Worst Model Cosine Similarity](evaluation/visual_analysis/worst_model_cos_sim.jpeg)
+
+* Loss
+
+  ![Worst Model Loss](evaluation/visual_analysis/worst_model_loss.jpeg)
+
+---
+
+## Running the Project with Docker
 
 1. **Clone the repo** and navigate into the project directory:
 
