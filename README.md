@@ -156,6 +156,30 @@ script_directory/  (project root)
    streamlit run scripts/streamlit.py
    ```
 
+## Running The Project With Docker
+
+1. **Clone the repo** and navigate into the project directory:
+
+   ```bash
+   git clone https://github.com/DanDumitruArdeleanu/Applied-ML-Group8.git
+   cd Applied-ML-Group8
+   ```
+2. **Download Docker Desktop**, from the following link:
+   ```
+   https://www.docker.com/products/docker-desktop/
+   ```
+
+3. **Build The Docker Image**:
+   ```
+   docker build --shm-size=2g -t my-ml-app .
+   ```
+
+4. **Run Docker**:
+   ```
+   docker run --shm-size=2g -p 8000:8000 my-ml-app
+   ```
+
+
 ---
 
 ## 🔧 Configuration
