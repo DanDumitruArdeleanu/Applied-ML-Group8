@@ -42,6 +42,7 @@ script_directory/  (project root)
 │  ├─ streamlit.py                              # Streamlit Demo 
 │  └─ main.py                                   # FastAPI server entrypoint
 ├─ requirements.txt                             # Third-party dependencies
+├─ Dockerfile
 └─ README.md                                    # You are here
 ```
 
