@@ -1,6 +1,41 @@
 # Surface Normals Prediction
 
-This repository implements a full pipeline for predicting surface normal maps from object screenshots, including data preprocessing, model training with hyperparameter tuning, and a FastAPI for inference.
+This repository implements a full pipeline for predicting **per-pixel surface normal vectors** from 2D RGB images of 3D objects, specifically their visible sides. It includes data preprocessing, model training with hyperparameter tuning, and a FastAPI server for real-time inference.
+
+---
+
+## Project Overview
+
+- **Goal**: Develop a model that predicts accurate per-pixel surface normals (nx, ny, nz) from single images of 3D objects
+- **Dataset**: 15 `.ply` object meshes from the LineMod dataset
+  - Object 14 was excluded due to errors
+- **Output**: A dense normal map per rendered image (3 channels: nx, ny, nz)
+- **Use Cases**:
+  - Robotics (e.g., environment interaction)
+  - Self-driving cars (e.g., estimating object orientation)
+
+---
+
+### Dataset Construction & Processing
+
+To train a model that predicts dense surface normals from single 2D images, we constructed a dataset from 3D mesh data using the following pipeline:
+
+- **Input Data**: 14 .ply object meshes from the LineMod dataset.
+- **Viewpoint Augmentation**: Each object was rendered from 729 unique orientations, created by rotating along the X, Y, and Z axes in 9 discrete steps (0° to 360° in 45° increments). For each view, two outputs were generated: an RGB screenshot and a corresponding surface normal map.
+- **Visible Surface Filtering**: To ensure supervision only on visible geometry, we filtered normals using the dot product between the surface normal and the camera’s viewing direction. Only normals with a negative dot product (i.e. facing the camera) were retained.
+- **Normalization & Resolution**: All RGB images and normal maps were resized to 128×128 and normalized appropriately.
+- **Data Split**: The processed dataset was split into 80% training and 20% validation sets.
+
+---
+
+### Model & Training Highlights
+- **Loss Function**: Used a masked cosine similarity loss, which compares predicted and true normal vectors by their cosine similarity but only calculates loss for pixels where valid normals exist (masking out invalid or background pixels)
+
+**Regularization & Optimization**
+- Dropout after each conv layer
+- L2 weight decay on all conv layers
+- Early stopping and learning rate scheduling
+- Hyperparameter tuning via Keras Tuner (Hyperband)
 
 ---
 
