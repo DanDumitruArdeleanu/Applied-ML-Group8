@@ -31,13 +31,16 @@ script_directory/  (project root)
 │     ├─ performance_summary.json
 │     └─ trial_scores.json                      # Aggregated trial scores
 ├─ scripts/                                     # All Python scripts
+│  ├─ evaluation_scripts/
+│  │  ├─ evaluate_trial_scores.py               # Analyze & visualize hyperparameter tuning trial scores
+│  │  └─ extract_metrics.py                     # Extract final loss & accuracy metrics from tuning trials
 │  ├─ config.py                                 # Centralized path config
 │  ├─ data_datapreprocessing.py                 # Raw → PCA features
 │  ├─ data_postprocessing.py                    # Rotate & render meshes per orientation
 │  ├─ extract_models.py                         # Summarize trial scores into JSON
 │  ├─ train_model.py                            # Hyperparameter tuning & model export
 │  ├─ streamlit.py                              # Streamlit Demo 
-│  ├─ main.py                                   # FastAPI server entrypoint
+│  └─ main.py                                   # FastAPI server entrypoint
 ├─ requirements.txt                             # Third-party dependencies
 └─ README.md                                    # You are here
 ```
@@ -155,6 +158,21 @@ script_directory/  (project root)
    ```
    streamlit run scripts/streamlit.py
    ```
+
+### 4. Evaluation & Metrics Extraction
+
+* **Evaluate trial scores and generate visualizations**:
+
+  ```bash
+  python scripts/evaluation_scripts/evaluate_trial_scores.py
+  python scripts/evaluation_scripts/extract_metrics.py
+  ```
+
+  Outputs are placed in:
+
+  ```bash
+  evaluation/
+  ```
 
 ---
 
