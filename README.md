@@ -159,6 +159,21 @@ script_directory/  (project root)
    streamlit run scripts/streamlit.py
    ```
 
+### 4. Evaluation & Metrics Extraction
+
+* **Evaluate trial scores and generate visualizations**:
+
+  ```bash
+  python scripts/evaluation_scripts/evaluate_trial_scores.py
+  python scripts/evaluation_scripts/extract_metrics.py
+  ```
+
+  Outputs are placed in:
+
+  ```bash
+  evaluation/
+  ```
+
 ## Running The Project With Docker
 
 1. **Clone the repo** and navigate into the project directory:
@@ -181,7 +196,6 @@ script_directory/  (project root)
    ```
    docker run --shm-size=2g -p 8000:8000 my-ml-app
    ```
-
 
 ---
 
